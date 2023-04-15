@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: kuberapp
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: kuberapp
+   template:
+      metadata:
+        labels:
+          app: kuberapp
+      spec:
+       containers:
+        - name: kuberapp
+          image: dibyadarsi/pipeline-demo
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
